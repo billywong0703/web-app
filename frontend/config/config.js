@@ -1,9 +1,8 @@
 'use strict';
 import { resolve } from 'path';
 
-/*https://github.com/sunilksamanta/node-mongoose-setup*/
 
-export default getConfig() {
+export default function getConfig() {
     const config = {
         'MODE': 'Development',
         'PORT': process.env.PORT || 5000,
