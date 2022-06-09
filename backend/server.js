@@ -2,29 +2,24 @@
 
 import express from "express";
 import bodyParser from "body-parser";
-import mongoose from "mongoose";
+import setupDB from "./utils/database.js";
 import cors from "cors";
-import User from "./models/userSchema.js";
+import keys from './config/keys.js';
+import routes from './routers/index.js';
+
 
 const app = express();
+
+const port = keys.port;
+const serverURL  = keys.app.serverURL;
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 app.use(cors());
+app.use(routes);
 
-const CONNECTION_URL = "http://localhost:27017/myapp";
+setupDB();
 
-const mongooseConnect = () => {
-    console.log("connect");
-}
-
-const mongooseError = (e) => {
-    console.log(e);
-}
-
-mongoose.connect(CONNECTION_URL, mongooseConnect, mongooseError);
-
-const user = new User({login: "user", password: "sf"});
-
-
-
+const server = app.listen(port, () => {
+    console.log(`Listening on port ${port}. Visit ${serverURL} in your browser.`);
+});
