@@ -1,5 +1,7 @@
 import express from "express";
 import User from "../../models/userSchema.js"
+import auth from '../../middleware/auth.js';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -9,13 +11,17 @@ router.post('/login', async (req, res) => {
 
         if (!loginName || !password) return res.status(400).json({ success: false, error: 'invail data' });
 
-        const user = await User.findOne({ loginName: loginName })
+        const user = await User.findOne({ loginName: loginName });
 
         if (!user) return res.status(400).send({ success: false, error: 'No user found for this loginName.' });
 
         const isMatch = await user.comparePassword(password);
 
         if (!isMatch) return res.status(400).json({ success: false, error: 'Password Incorrect' });
+
+        const token = jwt.sign({ id: user.id }, 'secret');
+
+        if (!token) { throw new Error() }
 
         return res.status(200).json({ success: true, msg: 'good' });
     }
@@ -24,7 +30,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/add', async (req, res) => {
+router.post('/add', auth, async (req, res) => {
     try {
         const { loginName, password } = req.body;
 
