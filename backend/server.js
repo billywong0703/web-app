@@ -18,10 +18,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 app.use(cors());
 app.use(routes);
-
 setupDB();
-passportInitialize(app);
+app.use(passportInitialize);
 
-const server = app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Listening on port ${port}. Visit ${serverURL} in your browser.`);
 });

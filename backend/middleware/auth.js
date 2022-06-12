@@ -1,7 +1,5 @@
 import passport from "passport"
 
-const auth = passport.authenticate('jwt', { session: false }, function (err, user) {
-    console.log('now is middleware');
-});
+const auth = passport.authenticate('jwt', { session: false });
 
 export default auth;

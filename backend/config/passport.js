@@ -1,21 +1,29 @@
-import mongoose from 'mongoose';
 import User from '../models/userSchema.js';
 import passport from 'passport';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
+import keys from "../config/keys.js";
+
 
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'secret'
+    secretOrKey: keys.jwt.secret
 };
 
-passport.use(new JwtStrategy(opts, (payload, done) => {
-    console.log("passport.use JwtStrategy");
-    return done(null, "dgdg");
+// check user
+passport.use(new JwtStrategy(opts, async (payload, done) => {
+    try {
+        const user = await User.findById({ _id: payload.id });
+
+        if (!user) return done(null, false);
+
+        return done(null, user);
+    } catch (err) {
+        return done(err, false);
+    }
 }));
 
 const passportInitialize = async (app) => {
-    console.log("passport done");
-    app.use(passport.initialize());
+    passport.initialize();
 }
 
 export default passportInitialize
