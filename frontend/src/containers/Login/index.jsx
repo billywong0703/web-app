@@ -1,6 +1,6 @@
 import LoginBox from '../../components/LoginBox/LoginBox';
+import styles from './Login.module.css';
 import { useState } from 'react';
-import style from './style';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +23,6 @@ const LoginContainer = () => {
             })
             .catch(err => {
                 if (err.response && err.response.data) {
-                    console.log(err.response.data)
                     let errmsg = err.response.data.error || "contant dev";
                     alert(errmsg);
                 }
@@ -31,9 +30,9 @@ const LoginContainer = () => {
     }
 
     return (
-        <div style={style.body}>
-            <div style={style.content}>
-                <div style={style.text}>Blog E-system</div>
+        <div className={styles.body}>
+            <div className={styles.content}>
+                <div className={styles.text}>Blog E-system</div>
                 <LoginBox onSetLogin={onSetLoginObj} onSubmit={onSubmit}></LoginBox>
             </div>
         </div>

@@ -1,0 +1,26 @@
+.body {
+    background-color: rgb(255, 255, 255);
+    background-image: url("../../images/1118.jpg");
+    background-position: center;
+    background-origin: content-box;
+    height: 100vh;
+}
+
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.text {
+    padding: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    background: linear-gradient(0.75turn, rgb(22 117 197), rgb(62 181 88));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

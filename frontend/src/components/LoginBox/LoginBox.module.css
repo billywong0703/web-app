@@ -1,0 +1,27 @@
+.loginBox {
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.loginText {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 5px;
+    margin-bottom: 20px;
+    background: linear-gradient(0.75turn, rgb(22 117 197), rgb(62 181 88));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+} 
+
+.inputBox {
+    margin: 2px
+}
+
+.loginBtn {
+    margin: 20px 0
+}
