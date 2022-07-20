@@ -1,0 +1,11 @@
+.textThe, .textGamer{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.textThe {
+    color: rgb(0, 0, 0);
+}
+
+.textGamer {
+    color: rgb(38, 148, 156);
+}
