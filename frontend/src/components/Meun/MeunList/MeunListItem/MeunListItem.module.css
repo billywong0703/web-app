@@ -1,0 +1,58 @@
+.active {
+    color: rgb(255, 255, 255);
+    background: #3f5688;
+    transition: all 0.3s;
+}
+
+.meunList{
+    position: relative;
+}
+
+.meunListText{
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.meunListText:hover{
+    background-color: #fff;
+    color: #41598b;
+    transition: all 0.3s;
+}
+
+.subMenuListItem {
+    padding: 10px;
+    padding-left: 30px;
+    background: #5d7ab5;
+    font-size: 14px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.subMenuListItem:hover {
+    color: #41598b;
+    background: rgb(255, 255, 255);
+}
+
+.dropdownToggle {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgb(255, 255, 255);    
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.meunListText:hover .dropdownToggle {
+    border-top: 5px solid #41598b;    
+}
+
+
+.subMenuList{
+    height:0px;
+    transition: height 0.5s;    
+    overflow: hidden;
+}

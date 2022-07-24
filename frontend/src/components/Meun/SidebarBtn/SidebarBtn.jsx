@@ -4,7 +4,7 @@ import meunStyles from './../Meun.module.css';
 
 const SidebarBtn = () => {
     return (
-        <button type="button" className={`${styles.sidebarCollapse} ${meunStyles['navbar-btn']}`}>
+        <button type="button" className={`${styles.sidebarCollapse} ${meunStyles.navbarBtn}`}>
             <span></span>
             <span></span>
             <span></span>
