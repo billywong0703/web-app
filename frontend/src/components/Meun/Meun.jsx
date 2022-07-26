@@ -3,14 +3,20 @@ import SidebarBtn from './SidebarBtn/SidebarBtn';
 import MeunList from './MeunList/MeunList';
 import MyLogo from './../MyLogo/MyLogo';
 import { Person as PersonIcon, Cached as CachedIcon, Email as EmailIcon, Key } from '@mui/icons-material/';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { StyledEngineProvider } from '@mui/material/styles';
 
 
 const Meun = () => {
+    const [openMeun, setOpenMeun] = useState(false);
+
+    const onTriggerMeun = () => {
+        setOpenMeun(!openMeun);
+    }
     return (
         <div>
-            <nav className={styles.sidebar}>
+            <nav className={`${styles.sidebar} ${openMeun ? styles.hidden : ""}`}>
                 <div className={styles.sidebarHeader}>
                     <MyLogo />
                 </div>
@@ -44,7 +50,7 @@ const Meun = () => {
                 </div>
                 
             </nav>
-            <SidebarBtn />
+            <SidebarBtn openMeun={openMeun} onTriggerMeun={onTriggerMeun}/>
         </div>
     )
 }

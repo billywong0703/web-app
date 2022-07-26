@@ -1,0 +1,35 @@
+{
+    "meun": [
+        {
+            "title": "Site",
+            "subMeun": [
+                {
+                    "title": "subSite1",
+                    "href": ""
+                },
+                {
+                    "title": "subSite2",
+                    "href": ""
+                }
+            ]
+        },
+        {
+            "title": "Table CURD",
+            "href": "",
+            "subMeun" : [
+                {
+                    "title": "Table1",
+                    "href": ""
+                },
+                {
+                    "title": "Table2",
+                    "href": ""
+                }
+            ]
+        },
+        {
+            "title": "meun2",
+            "href": ""
+        }
+    ]
+}
