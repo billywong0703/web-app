@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 const { Schema, model } = mongoose;
 const SALT_WORK_FACTOR = 10;
 
-const UserSchema = new Schema({
+const user = new Schema({
     loginName: {
         type: String,
         required: true,
@@ -20,7 +20,7 @@ const UserSchema = new Schema({
 });
 
 
-UserSchema.pre('save', function (next) {
+user.pre('save', function (next) {
     let user = this;
 
     if (!user.isModified('password')) return next();
@@ -38,7 +38,7 @@ UserSchema.pre('save', function (next) {
     });
 });
 
-UserSchema.methods.comparePassword = async function (candidatePassword, cb) {
+user.methods.comparePassword = async function (candidatePassword) {
     try {
         const isMatch = await bcrypt.compare(candidatePassword, this.password);
         return isMatch;
@@ -49,4 +49,4 @@ UserSchema.methods.comparePassword = async function (candidatePassword, cb) {
 
 
 
-export default model("User", UserSchema);
+export default model("User", user);

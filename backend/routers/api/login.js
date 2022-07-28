@@ -1,5 +1,7 @@
+'use strict';
+
 import express from "express";
-import User from "../../models/userSchema.js"
+import User from "../../models/user.js"
 import auth from '../../middleware/auth.js';
 import jwt from 'jsonwebtoken';
 import keys from '../../config/keys.js';
