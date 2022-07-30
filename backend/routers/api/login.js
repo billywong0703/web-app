@@ -32,15 +32,22 @@ router.post('/login', async (req, res) => {
         }
 
         const token = jwt.sign({ id: user.id }, keys.jwt.secret, { expiresIn: keys.jwt.tokenLife });
+        res.cookie('auth_token ', token);
         res.status(200).json({
-            success: true,
-            token: token,
+            success: true
         });
     } catch (error) {
         res.status(400).json({
             error: 'Your request could not be processed. Please try again.'
         });
     }
+})
+
+router.post('/logout', auth, async (req, res) => {
+    res.clearCookie('auth_token');
+    res.status(200).json({
+        success: true
+    });
 })
 
 router.post('/add', auth, async (req, res) => {
@@ -62,7 +69,7 @@ router.post('/add', auth, async (req, res) => {
         const newUser = await User.create({ loginName: loginName, password: password });
         if (!newUser) {
             return res.status(400).json({
-                error: 'you can nod add new User'
+                error: 'you can not add new User'
             });
         }
 
@@ -73,5 +80,7 @@ router.post('/add', auth, async (req, res) => {
         });
     }
 })
+
+router.use('/auth', router);
 
 export default router

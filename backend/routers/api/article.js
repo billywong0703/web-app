@@ -6,12 +6,12 @@ import auth from '../../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/artices/', async (req, res) => {
+router.get('/', async (req, res) => {
     const articles = await Article.find({});
     return res.status(200).json({ success: true, data: articles });
 })
 
-router.post('/artices/', async (req, res) => {
+router.post('/', async (req, res) => {
     const data = req.body;
     await Article.create(data, function (err) {
         if (!err) return res.status(200).json({ success: true, msg: 'good' });
@@ -19,12 +19,14 @@ router.post('/artices/', async (req, res) => {
     });
 })
 
-router.put('/artices/:id', auth, async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
 
 })
 
-router.delete('/artices/:id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
 
 })
+
+router.use('/artices', router);
 
 export default router

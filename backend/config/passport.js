@@ -3,9 +3,14 @@ import passport from 'passport';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
 import keys from "../config/keys.js";
 
+const cookieExtractor = function (req) {
+    let token = null;
+    if (req && req.cookies) token = req.cookies['auth_token'];
+    return token;
+};
 
 const opts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    jwtFromRequest: cookieExtractor,
     secretOrKey: keys.jwt.secret
 };
 
